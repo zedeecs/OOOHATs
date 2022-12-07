@@ -5,6 +5,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <unistd.h>
 
 //Import wiringPi/I2C library
 // #include <wiringPi.h>
@@ -62,7 +63,8 @@ int main(void)
         //     wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x01);
         // }
 
-        delay(1000);
+        sleep(3);
+        // delay(1000);
     }
 
     return 0;
