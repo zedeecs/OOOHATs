@@ -57,3 +57,4 @@ dkms.conf
 *.defs
 *.plt
 *.fft
+*.net
