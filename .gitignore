@@ -58,4 +58,4 @@ dkms.conf
 *.plt
 *.fft
 *.net
-/test
+*/test
