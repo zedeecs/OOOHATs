@@ -1,10 +1,14 @@
 #!/bin/bash
+# 
+#
+# First, Enable PWM with armbin-config
+# this script enable UART0(RX) pwm device
 
 iPeriod=$((1000000000/$1))
 iDuty_cycle=$(($iPeriod*$2/100))
 
 dev_path="/sys/class/pwm/pwmchip0"
-# echo 0 > $dev_path"/export"
+echo 0 > $dev_path"/export"
 
 pwm_path=$dev_path"/pwm0"
 
