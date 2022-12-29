@@ -1,3 +1,6 @@
+// gcc -o fanctl get_temp.c -lwiringPi -lcrypt -lm -lrt
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,7 +11,7 @@
 #include <unistd.h>
 
 //Import wiringPi/I2C library
-// #include <wiringPi.h>
+#include <wiringPi.h>
 // #include <wiringPiI2C.h>
 
 #define TEMP_PATH "/sys/class/thermal/thermal_zone0/temp"
@@ -23,7 +26,8 @@ int main(void)
 
     //Define I2C related parameters
     // int fd_i2c;
-    // wiringPiSetup();
+    wiringPiSetup();
+    pinMode(2, OUTPUT);
     // fd_i2c = wiringPiI2CSetup(0x0d);
     // if (fd_i2c < 0)
     // {
@@ -54,14 +58,17 @@ int main(void)
         close(fd_temp); //turn off file
 
         
-        // if (temp <= 45)
-        // {
-        //     wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x00);
-        // }
-        // else if (temp >= 50)
-        // {
-        //     wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x01);
-        // }
+        if (temp <= 40)
+        {
+            // wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x00);
+           digitalWrite(2, LOW); 
+            
+        }
+        else if (temp >= 50)
+        {
+            // wiringPiI2CWriteReg8(fd_i2c, 0x08, 0x01);
+           digitalWrite(2, HIGH); 
+        }
 
         sleep(3);
         // delay(1000);
