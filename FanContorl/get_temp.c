@@ -77,8 +77,8 @@ int main(void)
             system("shutdown -P now");
         }
 
-        sleep(3);
-        // delay(1000);
+        // sleep(3);
+        delay(3000);
     }
 
     return 0;
